@@ -1,0 +1,591 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "cJcF9W",
+    "name": "getStatus",
+    "description": "to get Status of Api's"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "nbfgoG"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "DKxUZR"
+          },
+          "activity": "${SendActivity_DKxUZR()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "dQQNy7"
+          },
+          "method": "POST",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/create-customer",
+          "resultProperty": "dialog.api_response",
+          "headers": {
+            "client": "loyalytics",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAwOTI4NTIyLCJleHAiOjE2MDEwMTQ5MjJ9.sOqR_RZLvnFwnRds0CydNlopkp5183WKIgbOHRe0Etg",
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "firstName": "Rahul",
+            "lastName": "Jhawar",
+            "mobile": "{{mobile}}",
+            "signupTerminalId": "SC02",
+            "email": "m@m.co",
+            "cashierId": "10026",
+            "storeID": "Sc09",
+            "language": "AR",
+            "dateOfBirth": "1982-01-01",
+            "dateOfAnniversery": "2011-01-01",
+            "gender": "M",
+            "country": "UAE"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "OEVkWn"
+          },
+          "activity": "${SendActivity_OEVkWn()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "oNVnJy"
+          },
+          "method": "GET",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/get-customer?mobile=7899049853",
+          "resultProperty": "dialog.api_response",
+          "headers": {
+            "mobile": "7899049853",
+            "client": "loyalytics",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw",
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "pXtfK7"
+          },
+          "activity": "${SendActivity_pXtfK7()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "9opzDV"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/post-generate-otp",
+          "method": "POST",
+          "headers": {
+            "content-type": "appliaton/json",
+            "client": "loyalytics",
+            "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw"
+          },
+          "body": {
+            "mobile": "{{mobile}}",
+            "transactionId": "{{billNo}}",
+            "storeID": "TEST",
+            "points": 10
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "DAgTsk"
+          },
+          "activity": "${SendActivity_DAgTsk()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "kRynsU"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/auth/loyalytics/get-auth-token",
+          "method": "GET",
+          "headers": {
+            "Ocp-Apim-Subscription-Key": "87a0cb1c86394992a0745bac33568fe3",
+            "client": "loyalytics"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "9jK8OY"
+          },
+          "activity": "${SendActivity_9jK8OY()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "S6PIhl"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/post-validate-otp",
+          "method": "POST",
+          "body": {
+            "mobile": "{{mobile}}",
+            "transactionId": "{{billNo}}",
+            "storeID": "TEST",
+            "points": 10,
+            "OTP": "852673"
+          },
+          "headers": {
+            "Content-Type": "applicaton/json",
+            "client": "loyalytics",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "f2xUoc"
+          },
+          "activity": "${SendActivity_f2xUoc()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "sHIuky"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/reinstate-points",
+          "method": "POST",
+          "body": {
+            "redeemPoints": 100,
+            "mobile": "{{mobile}}",
+            "transactionId": "1139021139-113902-956117"
+          },
+          "headers": {
+            "client": "loyalytics",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw",
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "ybBmmG"
+          },
+          "activity": "${SendActivity_ybBmmG()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "sxQ1mA"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/get-coupon?couponCode=w02bp&mobile={{mobile}}",
+          "method": "GET",
+          "headers": {
+            "coupanCode": "w02bp",
+            "mobile": "7899049853"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "MQhMBr"
+          },
+          "activity": "${SendActivity_MQhMBr()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "4rnyDy"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/post-coupon-validate",
+          "method": "POST",
+          "headers": {
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw",
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "couponCode": "monday",
+            "mobile": "{{mobile}}",
+            "storeID": "1105",
+            "transactionId": "{{billNo}}",
+            "billAmt": 45.72,
+            "transDate": "2019-05-14T13:39:00.8138947Z",
+            "billLineItems": {
+              "lineItems": [
+                {
+                  "stockNo": "1008619",
+                  "description": "HERB DAY 365 CLEANSING FOAM PEACH",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 32,
+                  "value": 32,
+                  "discount": 0,
+                  "amount": 30.48,
+                  "grossAmount": 32,
+                  "billNumber": "TFS3025010000215233"
+                },
+                {
+                  "stockNo": "1000285",
+                  "description": "REAL NATURE MASK SHEET SNOW SHEA BUTTER.2017",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 16,
+                  "value": 16,
+                  "discount": 0,
+                  "amount": 15.24,
+                  "grossAmount": 16,
+                  "billNumber": "TFS3025010000215233"
+                },
+                {
+                  "stockNo": "1502492",
+                  "description": "REAL NATURE MASK SHEET SNOW SHEA BUTTER.2017",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 16,
+                  "value": 16,
+                  "discount": 0,
+                  "amount": 15.24,
+                  "grossAmount": 16,
+                  "billNumber": "TFS3025010000215233"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "BZUp0M"
+          },
+          "activity": "${SendActivity_BZUp0M()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "jgnp9E"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/post-coupon-reinstate",
+          "method": "POST",
+          "body": {
+            "couponCode": "w02bp",
+            "mobile": "{{mobile}}",
+            "storeID": "SPF ADM",
+            "transactionId": "{{billNo}}"
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "YsLpGD"
+          },
+          "activity": "${SendActivity_YsLpGD()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "WIy0tC"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/create-transaction",
+          "method": "POST",
+          "body": {
+            "customer": {
+              "customerDetails": {
+                "mobile": "{{mobile}}",
+                "name": "\n",
+                "email": "\n",
+                "externalId": "\n"
+              }
+            },
+            "bill": {
+              "billNumber": "{{billNo}}",
+              "billAmt": 66.67,
+              "billGrossAmount": 70,
+              "billDiscount": 0,
+              "cashierId": "100979",
+              "companyCode": "AGR",
+              "notes": "",
+              "returnBillNum": "",
+              "billType": "Regular",
+              "storeID": "SPF2032",
+              "storeTerminalID": "SPF203201",
+              "currency": "AED"
+            },
+            "billLineItems": {
+              "lineItems": [
+                {
+                  "stockNo": "TFS00091",
+                  "description": "PURE SPA WATER LIQUID CLEANSING CREAM",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 30,
+                  "value": 30,
+                  "discount": 0,
+                  "amount": 28.57,
+                  "grossAmount": 30,
+                  "billNumber": "{{billNo}}"
+                },
+                {
+                  "stockNo": "TFS00090",
+                  "description": "PURE SPA WATER BUBBLE CLEANSING FOAM",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 40,
+                  "value": 40,
+                  "discount": 0,
+                  "amount": 38.1,
+                  "grossAmount": 40,
+                  "billNumber": "{{billNo}}"
+                }
+              ]
+            },
+            "paymentMode": {
+              "paymentModeDetails": [
+                {
+                  "payModeType": "1",
+                  "value": 70
+                },
+                {
+                  "payModeType": "LoyaltyPoints",
+                  "value": 100
+                }
+              ]
+            },
+            "cardNumber": "{{cardNumber}}",
+            "receiptId": "r{{billNo}}"
+          },
+          "headers": {
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw",
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "DOpRbM"
+          },
+          "activity": "${SendActivity_DOpRbM()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "hq9DOt"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/create-bad-transaction",
+          "method": "POST",
+          "body": {
+            "customer": {
+              "customerDetails": {
+                "mobile": "{{mobile}}",
+                "name": "\n",
+                "email": "\n",
+                "externalId": "\n"
+              }
+            },
+            "bill": {
+              "billNumber": "{{billNo}}",
+              "billAmt": 66.67,
+              "billGrossAmount": 70,
+              "billDiscount": 0,
+              "cashierId": "100979",
+              "companyCode": "AGR",
+              "notes": "",
+              "returnBillNum": "",
+              "billType": "Regular",
+              "storeID": "SPF2032",
+              "storeTerminalID": "SPF203201",
+              "currency": "AED"
+            },
+            "billLineItems": {
+              "lineItems": [
+                {
+                  "stockNo": "TFS00091",
+                  "description": "PURE SPA WATER LIQUID CLEANSING CREAM",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 30,
+                  "value": 30,
+                  "discount": 0,
+                  "amount": 28.57,
+                  "grossAmount": 30,
+                  "billNumber": "{{billNo}}"
+                },
+                {
+                  "stockNo": "TFS00090",
+                  "description": "PURE SPA WATER BUBBLE CLEANSING FOAM",
+                  "markdownFlag": "N",
+                  "quantity": 1,
+                  "rate": 40,
+                  "value": 40,
+                  "discount": 0,
+                  "amount": 38.1,
+                  "grossAmount": 40,
+                  "billNumber": "{{billNo}}"
+                }
+              ]
+            },
+            "paymentMode": {
+              "paymentModeDetails": [
+                {
+                  "payModeType": "1",
+                  "value": 70
+                },
+                {
+                  "payModeType": "LoyaltyPoints",
+                  "value": 100
+                }
+              ]
+            },
+            "cardNumber": "{{cardNumber}}",
+            "receiptId": "r{{billNo}}"
+          },
+          "headers": {
+            " Content-Type": "application/json",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "HuklPP"
+          },
+          "activity": "${SendActivity_HuklPP()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "e8c43Y"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/post-pings",
+          "method": "POST",
+          "body": {
+            "type": "POS",
+            "terminalID": "TEST",
+            "storeID": "STORE",
+            "version": "v1",
+            "client": "{{client}}"
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxMjcwMTcyLCJleHAiOjE2MDEzNTY1NzJ9.AMEpYkcsoesNsx_oDx95QZWi0JnQQOW9KG_XrERXepw"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "rvEWcs"
+          },
+          "activity": "${SendActivity_rvEWcs()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "msB4sh"
+          },
+          "resultProperty": "dialog.api_response",
+          "url": "https://api.loyalytics.ai/v1/loyalytics/create-transaction",
+          "method": "POST",
+          "body": {
+            "customer": {
+              "customerDetails": {
+                "mobile": "{{mobile}}",
+                "name": "\n",
+                "email": "\n",
+                "externalId": "\n"
+              }
+            },
+            "bill": {
+              "billNumber": "{{billNo}}",
+              "billAmt": -66.67,
+              "billGrossAmount": -70,
+              "billDiscount": 0,
+              "cashierId": "100979",
+              "companyCode": "AGR",
+              "notes": "",
+              "returnBillNum": "{{returnBillNumber}}",
+              "billType": "Regular",
+              "storeID": "SPF2032",
+              "storeTerminalID": "SPF203201",
+              "currency": "AED"
+            },
+            "billLineItems": {
+              "lineItems": [
+                {
+                  "stockNo": "TFS00091",
+                  "description": "PURE SPA WATER LIQUID CLEANSING CREAM",
+                  "markdownFlag": "N",
+                  "quantity": -1,
+                  "rate": -30,
+                  "value": -30,
+                  "discount": 0,
+                  "amount": -28.57,
+                  "grossAmount": -30,
+                  "billNumber": "{{billNo}}",
+                  "category": "pharma"
+                },
+                {
+                  "stockNo": "TFS00090",
+                  "description": "PURE SPA WATER BUBBLE CLEANSING FOAM",
+                  "markdownFlag": "N",
+                  "quantity": -1,
+                  "rate": -40,
+                  "value": -40,
+                  "discount": 0,
+                  "amount": -38.1,
+                  "grossAmount": -40,
+                  "billNumber": "{{billNo}}",
+                  "category": "nonPharma"
+                }
+              ]
+            },
+            "paymentMode": {
+              "paymentModeDetails": [
+                {
+                  "payModeType": "1",
+                  "value": -69
+                },
+                {
+                  "payModeType": "LoyaltyPoints",
+                  "value": -1
+                }
+              ]
+            },
+            "homeDeliveryOpt": false,
+            "cardNumber": "{{cardNumber}}"
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJsb3lhbHl0aWNzIiwicHVycG9zZSI6ImFwaS1hdXRoIiwiaWF0IjoxNjAxNTQ2MDI4LCJleHAiOjE2MDE2MzI0Mjh9.H2uMdmX_Rlf53e13YlyHa9qVoK0nF40Ac8X7G3Pc6m0"
+          }
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "iOgWLH"
+          },
+          "activity": "${SendActivity_iOgWLH()}"
+        }
+      ]
+    }
+  ],
+  "generator": "getStatus.lg",
+  "recognizer": "getStatus.lu.qna",
+  "id": "getStatus"
+}
